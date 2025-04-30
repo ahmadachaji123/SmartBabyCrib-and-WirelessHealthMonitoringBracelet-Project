@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data Graphs</title>
+    <!-- Firebase -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <!-- Date adapter for Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <!-- Plugin for zooming and panning -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+
+    <style>
+        /* CSS for responsive canvas */
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px 5px;
+            background-color: #f4f4f4;
+        }
+
+        .chart-wrapper {
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .chart-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .chart-btn {
+            padding: 5px 10px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .chart-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        /* Media query for smaller screens */
+        @media only screen and (max-width: 600px) {
+            .chart-container {
+                height: 250px;
+            }
+            .chart-btn {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+            .chart-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Temperature Chart -->
+    <div class="chart-wrapper">
+        <div class="chart-header">
+            <div class="chart-title">Temperature (°C)</div>
+            <div class="chart-controls">
+                <button class="chart-btn zoom-in" data-chart="temperatureChart">+</button>
+                <button class="chart-btn zoom-out" data-chart="temperatureChart">-</button>
+                <button class="chart-btn reset-zoom" data-chart="temperatureChart">Reset</button>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="temperatureChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Humidity Chart -->
+    <div class="chart-wrapper">
+        <div class="chart-header">
+            <div class="chart-title">Humidity (%)</div>
+            <div class="chart-controls">
+                <button class="chart-btn zoom-in" data-chart="humidityChart">+</button>
+                <button class="chart-btn zoom-out" data-chart="humidityChart">-</button>
+                <button class="chart-btn reset-zoom" data-chart="humidityChart">Reset</button>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="humidityChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Oxygen Chart -->
+    <div class="chart-wrapper">
+        <div class="chart-header">
+            <div class="chart-title">Oxygen Levels (%)</div>
+            <div class="chart-controls">
+                <button class="chart-btn zoom-in" data-chart="oxygenChart">+</button>
+                <button class="chart-btn zoom-out" data-chart="oxygenChart">-</button>
+                <button class="chart-btn reset-zoom" data-chart="oxygenChart">Reset</button>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="oxygenChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Heart Rate Chart -->
+    <div class="chart-wrapper">
+        <div class="chart-header">
+            <div class="chart-title">Heart Rate (bpm)</div>
+            <div class="chart-controls">
+                <button class="chart-btn zoom-in" data-chart="heartRateChart">+</button>
+                <button class="chart-btn zoom-out" data-chart="heartRateChart">-</button>
+                <button class="chart-btn reset-zoom" data-chart="heartRateChart">Reset</button>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="heartRateChart"></canvas>
+        </div>
+    </div>
+
+<script>
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCa8Zl1aMVWQYy5v_6K0TBR4bgWNRXe9DM",
+        authDomain: "fir-iot-9d8f7.firebaseapp.com",
+        databaseURL: "https://fir-iot-9d8f7-default-rtdb.firebaseio.com",
+        projectId: "fir-iot-9d8f7",
+        storageBucket: "fir-iot-9d8f7.appspot.com",
+        messagingSenderId: "244336984642",
+        appId: "1:244336984642:web:751a956f5ee52e718c23db",
+        measurementId: "G-H17FJDT07B"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const database = firebase.database(app);
+    let charts = {};
+
+    // Function to delete data older than 7 days
+    function deleteOldData(variable) {
+        const dataRef = database.ref('/FirebaseIOT/readings/sensors/timed/' + variable);
+        const counterRef = database.ref('/FirebaseIOT/readings/sensors/timed/' + variable + '/dataPointCounter');
+        const currentTime = new Date().getTime();
+        const sevenDaysAgo = currentTime - (7 * 24 * 60 * 60 * 1000);
+
+        dataRef.once('value', (snapshot) => {
+            let deletePromises = [];
+            
+            snapshot.forEach((childSnapshot) => {
+                const dataPoint = childSnapshot.val();
+                const timestamp = new Date(dataPoint.timestamp).getTime();
+
+                if (timestamp < sevenDaysAgo) {
+                    let deletePromise = childSnapshot.ref.remove()
+                        .then(() => {
+                            console.log(`Deleted old data for ${variable}`);
+                            return 1;
+                        })
+                        .catch((error) => {
+                            console.error(`Error deleting old data for ${variable}: `, error);
+                            return 0;
+                        });
+
+                    deletePromises.push(deletePromise);
+                }
+            });
+
+            Promise.all(deletePromises).then((deletedCounts) => {
+                let deletedTotal = deletedCounts.reduce((sum, count) => sum + count, 0);
+
+                if (deletedTotal > 0) {
+                    counterRef.transaction((currentCounter) => {
+                        return (currentCounter || 0) - deletedTotal;
+                    }).then(() => {
+                        console.log(`Updated dataPointCounter for ${variable} by -${deletedTotal}`);
+                    }).catch((error) => {
+                        console.error(`Error updating dataPointCounter for ${variable}: `, error);
+                    });
+                }
+            });
+        });
+    }
+
+    // Function to fetch data and render chart with timestamp sorting
+    function fetchDataAndRenderChart(variable, label, unit, chartId, chartColor) {
+        const dataRef = database.ref('/FirebaseIOT/readings/sensors/timed/' + variable);
+
+        dataRef.on('value', (snapshot) => {
+            const dataPoints = [];
+            snapshot.forEach((childSnapshot) => {
+                const dataPoint = childSnapshot.val();
+                dataPoints.push({
+                    x: new Date(dataPoint.timestamp),
+                    y: dataPoint.value
+                });
+            });
+
+            // Sort data points by timestamp
+            dataPoints.sort((a, b) => a.x - b.x);
+
+            renderChart(dataPoints, label, unit, chartId, chartColor);
+        }, (error) => {
+            console.error(`Error fetching data for ${variable}: `, error);
+        });
+    }
+
+    // Function to render the chart with enhanced zoom controls
+    function renderChart(dataPoints, label, unit, chartId, chartColor) {
+        if (charts[chartId]) {
+            charts[chartId].destroy();
+        }
+
+        const config = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: `${label} (${unit})`,
+                    data: dataPoints,
+                    borderColor: chartColor,
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 3,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: chartColor
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'MMM d, yyyy HH:mm',
+                            displayFormats: {
+                                hour: 'HH:mm',
+                                day: 'MMM d'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        },
+                        ticks: {
+                            source: 'data',
+                            maxRotation: 0,
+                            autoSkip: true
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: `${label} (${unit})`
+                        },
+                        grace: '5%'
+                    }
+                },
+                plugins: {
+                    zoom: {
+                        limits: {
+                            x: { min: 'original', max: 'original' },
+                            y: { min: 'original', max: 'original' }
+                        },
+                        pan: {
+                            enabled: true,
+                            mode: 'xy',
+                            threshold: 10
+                        },
+                        zoom: {
+                            wheel: {
+                                enabled: true,
+                                speed: 0.1,
+                                modifierKey: 'ctrl'
+                            },
+                            pinch: {
+                                enabled: true
+                            },
+                            mode: 'xy',
+                            scaleMode: 'xy',
+                            speed: 0.1
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: (context) => {
+                                return new Date(context[0].parsed.x).toLocaleString();
+                            }
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        };
+
+        const ctx = document.getElementById(chartId).getContext('2d');
+        charts[chartId] = new Chart(ctx, config);
+    }
+
+    // Initialize on page load
+    window.onload = function() {
+        // Delete old data
+        deleteOldData('temperature');
+        deleteOldData('humidity');
+        deleteOldData('oxygen');
+        deleteOldData('heartRate');
+
+        // Initialize charts with different colors
+        fetchDataAndRenderChart('temperature', 'Temperature', '°C', 'temperatureChart', 'rgba(255, 99, 132, 1)');
+        fetchDataAndRenderChart('humidity', 'Humidity', '%', 'humidityChart', 'rgba(54, 162, 235, 1)');
+        fetchDataAndRenderChart('oxygen', 'Oxygen Levels', '%', 'oxygenChart', 'rgba(75, 192, 192, 1)');
+        fetchDataAndRenderChart('heartRate', 'Heart Rate', 'bpm', 'heartRateChart', 'rgba(153, 102, 255, 1)');
+
+        // Add event listeners for all control buttons
+        document.querySelectorAll('.zoom-in').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const chartId = btn.getAttribute('data-chart');
+                if (charts[chartId]) {
+                    charts[chartId].zoom(1.2);
+                }
+            });
+        });
+
+        document.querySelectorAll('.zoom-out').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const chartId = btn.getAttribute('data-chart');
+                if (charts[chartId]) {
+                    charts[chartId].zoom(0.8);
+                }
+            });
+        });
+
+        document.querySelectorAll('.reset-zoom').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const chartId = btn.getAttribute('data-chart');
+                if (charts[chartId]) {
+                    charts[chartId].resetZoom();
+                }
+            });
+        });
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+{
+  "FirebaseIOT": {
+    "CMD": {
+      "autoMode": {
+        "light": "true",
+        "lightFlag": "0",
+        "music": "2",
+        "musicFlag": "0",
+        "swinging": "true",
+        "swingingFlag": "0"
+      },
+      "manualMode": {
+        "autoMode": "true",
+        "autoModeFlag": "0",
+        "heatingCooling": "true",
+        "heatingCoolingFlag": "1",
+        "light": "true",
+        "lightFlag": "0",
+        "music": "0",
+        "musicFlag": "0",
+        "swinging": "false",
+        "swingingFlag": "0",
+        "temperatureSetPoint": "22",
+        "temperatureSetPointFlag": "1"
+      }
+    },
+    "readings": {
+      "sensors": {
+        "raw": {
+          "ambientT": 20,
+          "appearanceState": true,
+          "cryingState": false,
+          "heartRate": 87,
+          "humidity": 69,
+          "oxygen": 97,
+          "temperature": 36.78
+        },
+        "timed": {
+          "heartRate": {
+            "dataPoint1796": {
+              "timestamp": "2025-12-04T18:50:57Z",
+              "value": 80
+            },
+            "dataPoint1797": {
+              "timestamp": "2025-12-04T18:51:07Z",
+              "value": 81
+            },
+            "dataPoint1798": {
+              "timestamp": "2025-12-04T18:51:19Z",
+              "value": 74
+            },
+            "dataPoint1799": {
+              "timestamp": "2025-12-04T18:51:33Z",
+              "value": 62
+            },
+            "dataPoint1800": {
+              "timestamp": "2025-12-04T18:51:44Z",
+              "value": 64
+            },
+            "dataPoint1801": {
+              "timestamp": "2025-12-04T18:51:58Z",
+              "value": 70
+            },
+            "dataPoint1802": {
+              "timestamp": "2025-12-04T18:52:10Z",
+              "value": 72
+            },
+            "dataPoint1803": {
+              "timestamp": "2025-12-04T18:52:24Z",
+              "value": 55
+            },
+            "dataPoint1804": {
+              "timestamp": "2025-12-04T18:52:37Z",
+              "value": 60
+            },
+            "dataPoint1805": {
+              "timestamp": "2025-12-04T18:52:50Z",
+              "value": 60
+            },
+            "dataPoint1806": {
+              "timestamp": "2025-12-04T18:53:09Z",
+              "value": 61
+            },
+            "dataPoint1807": {
+              "timestamp": "2025-12-04T18:53:23Z",
+              "value": 61
+            },
+            "dataPoint1808": {
+              "timestamp": "2025-12-04T18:53:33Z",
+              "value": 51
+            },
+            "dataPoint1809": {
+              "timestamp": "2025-12-04T18:53:46Z",
+              "value": 51
+            },
+            "dataPoint1810": {
+              "timestamp": "2025-12-04T18:53:56Z",
+              "value": 46
+            },
+            "dataPoint1811": {
+              "timestamp": "2025-12-04T18:54:18Z",
+              "value": 46
+            },
+            "dataPoint1812": {
+              "timestamp": "2025-12-04T18:54:39Z",
+              "value": 46
+            },
+            "dataPoint1813": {
+              "timestamp": "2025-12-04T18:54:52Z",
+              "value": 46
+            },
+            "dataPoint1814": {
+              "timestamp": "2025-12-04T18:55:16Z",
+              "value": 46
+            },
+            "dataPoint1815": {
+              "timestamp": "2025-12-04T18:55:32Z",
+              "value": 46
+            },
+            "dataPoint1816": {
+              "timestamp": "2025-12-04T18:55:57Z",
+              "value": 46
+            },
+            "dataPoint1817": {
+              "timestamp": "2025-12-04T18:56:32Z",
+              "value": 46
+            },
+            "dataPoint1818": {
+              "timestamp": "2025-12-04T18:56:57Z",
+              "value": 46
+            },
+            "dataPoint1819": {
+              "timestamp": "2025-12-04T18:57:51Z",
+              "value": 46
+            },
+            "dataPoint1820": {
+              "timestamp": "2025-12-04T18:58:03Z",
+              "value": 46
+            },
+            "dataPoint1821": {
+              "timestamp": "2025-12-04T18:58:17Z",
+              "value": 46
+            },
+            "dataPoint1822": {
+              "timestamp": "2025-12-04T18:58:27Z",
+              "value": 46
+            },
+            "dataPoint1823": {
+              "timestamp": "2025-12-04T19:11:19Z",
+              "value": 51
+            },
+            "dataPoint1824": {
+              "timestamp": "2025-12-04T19:11:34Z",
+              "value": 53
+            },
+            "dataPoint1825": {
+              "timestamp": "2025-12-04T19:11:45Z",
+              "value": 53
+            },
+            "dataPoint1826": {
+              "timestamp": "2025-12-04T19:12:03Z",
+              "value": 53
+            },
+            "dataPoint1827": {
+              "timestamp": "2025-12-04T19:12:18Z",
+              "value": 53
+            },
+            "dataPoint1828": {
+              "timestamp": "2025-12-04T19:12:32Z",
+              "value": 53
+            },
+            "dataPoint1829": {
+              "timestamp": "2025-12-04T19:12:43Z",
+              "value": 53
+            },
+            "dataPoint1830": {
+              "timestamp": "2025-12-04T19:12:55Z",
+              "value": 53
+            },
+            "dataPoint1831": {
+              "timestamp": "2025-12-04T19:13:22Z",
+              "value": 53
+            },
+            "dataPoint1832": {
+              "timestamp": "2025-12-04T19:13:44Z",
+              "value": 53
+            },
+            "dataPoint1833": {
+              "timestamp": "2025-12-04T19:18:57Z",
+              "value": 82
+            },
+            "dataPoint1834": {
+              "timestamp": "2025-12-04T19:19:16Z",
+              "value": 103
+            },
+            "dataPoint1835": {
+              "timestamp": "2025-12-04T19:19:30Z",
+              "value": 87
+            },
+            "dataPoint1836": {
+              "value": 87
+            },
+            "dataPointCounter": -1259,
+            "pass": ""
+          },
+          "humidity": {
+            "dataPointCounter": -975
+          },
+          "oxygen": {
+            "dataPoint1868": {
+              "timestamp": "2025-12-04T18:50:57Z",
+              "value": 100
+            },
+            "dataPoint1869": {
+              "timestamp": "2025-12-04T18:51:07Z",
+              "value": 100
+            },
+            "dataPoint1870": {
+              "timestamp": "2025-12-04T18:51:19Z",
+              "value": 100
+            },
+            "dataPoint1871": {
+              "timestamp": "2025-12-04T18:51:33Z",
+              "value": 100
+            },
+            "dataPoint1872": {
+              "timestamp": "2025-12-04T18:51:44Z",
+              "value": 100
+            },
+            "dataPoint1873": {
+              "timestamp": "2025-12-04T18:51:58Z",
+              "value": 91
+            },
+            "dataPoint1874": {
+              "timestamp": "2025-12-04T18:52:10Z",
+              "value": 91
+            },
+            "dataPoint1875": {
+              "timestamp": "2025-12-04T18:52:24Z",
+              "value": 91
+            },
+            "dataPoint1876": {
+              "timestamp": "2025-12-04T18:52:37Z",
+              "value": 91
+            },
+            "dataPoint1877": {
+              "timestamp": "2025-12-04T18:52:50Z",
+              "value": 91
+            },
+            "dataPoint1878": {
+              "timestamp": "2025-12-04T18:53:09Z",
+              "value": 99
+            },
+            "dataPoint1879": {
+              "timestamp": "2025-12-04T18:53:23Z",
+              "value": 99
+            },
+            "dataPoint1880": {
+              "timestamp": "2025-12-04T18:53:33Z",
+              "value": 99
+            },
+            "dataPoint1881": {
+              "timestamp": "2025-12-04T18:53:46Z",
+              "value": 92
+            },
+            "dataPoint1882": {
+              "timestamp": "2025-12-04T18:53:56Z",
+              "value": 92
+            },
+            "dataPoint1883": {
+              "timestamp": "2025-12-04T18:54:18Z",
+              "value": 92
+            },
+            "dataPoint1884": {
+              "timestamp": "2025-12-04T18:54:39Z",
+              "value": 92
+            },
+            "dataPoint1885": {
+              "timestamp": "2025-12-04T18:54:52Z",
+              "value": 92
+            },
+            "dataPoint1886": {
+              "timestamp": "2025-12-04T18:55:16Z",
+              "value": 92
+            },
+            "dataPoint1887": {
+              "timestamp": "2025-12-04T18:55:32Z",
+              "value": 92
+            },
+            "dataPoint1888": {
+              "timestamp": "2025-12-04T18:55:57Z",
+              "value": 92
+            },
+            "dataPoint1889": {
+              "timestamp": "2025-12-04T18:56:32Z",
+              "value": 92
+            },
+            "dataPoint1890": {
+              "timestamp": "2025-12-04T18:56:57Z",
+              "value": 92
+            },
+            "dataPoint1891": {
+              "timestamp": "2025-12-04T18:57:51Z",
+              "value": 92
+            },
+            "dataPoint1892": {
+              "timestamp": "2025-12-04T18:58:03Z",
+              "value": 92
+            },
+            "dataPoint1893": {
+              "timestamp": "2025-12-04T18:58:17Z",
+              "value": 92
+            },
+            "dataPoint1894": {
+              "timestamp": "2025-12-04T18:58:27Z",
+              "value": 92
+            },
+            "dataPoint1895": {
+              "timestamp": "2025-12-04T19:10:56Z",
+              "value": 93
+            },
+            "dataPoint1896": {
+              "timestamp": "2025-12-04T19:11:19Z",
+              "value": 93
+            },
+            "dataPoint1897": {
+              "timestamp": "2025-12-04T19:11:34Z",
+              "value": 93
+            },
+            "dataPoint1898": {
+              "timestamp": "2025-12-04T19:11:45Z",
+              "value": 93
+            },
+            "dataPoint1899": {
+              "timestamp": "2025-12-04T19:12:03Z",
+              "value": 97
+            },
+            "dataPoint1900": {
+              "timestamp": "2025-12-04T19:12:18Z",
+              "value": 97
+            },
+            "dataPoint1901": {
+              "timestamp": "2025-12-04T19:12:32Z",
+              "value": 97
+            },
+            "dataPoint1902": {
+              "timestamp": "2025-12-04T19:12:43Z",
+              "value": 97
+            },
+            "dataPoint1903": {
+              "timestamp": "2025-12-04T19:12:55Z",
+              "value": 97
+            },
+            "dataPoint1904": {
+              "timestamp": "2025-12-04T19:13:22Z",
+              "value": 97
+            },
+            "dataPoint1905": {
+              "timestamp": "2025-12-04T19:13:44Z",
+              "value": 97
+            },
+            "dataPoint1906": {
+              "timestamp": "2025-12-04T19:18:46Z",
+              "value": 100
+            },
+            "dataPoint1907": {
+              "timestamp": "2025-12-04T19:18:57Z",
+              "value": 100
+            },
+            "dataPoint1908": {
+              "timestamp": "2025-12-04T19:19:16Z",
+              "value": 97
+            },
+            "dataPoint1909": {
+              "timestamp": "2025-12-04T19:19:30Z",
+              "value": 97
+            },
+            "dataPointCounter": -1328,
+            "pass": ""
+          },
+          "pass": "",
+          "temperature": {
+            "dataPoint1872": {
+              "timestamp": "2025-12-04T18:50:57Z",
+              "value": 36.57
+            },
+            "dataPoint1873": {
+              "timestamp": "2025-12-04T18:51:07Z",
+              "value": 36.56
+            },
+            "dataPoint1874": {
+              "timestamp": "2025-12-04T18:51:19Z",
+              "value": 36.56
+            },
+            "dataPoint1875": {
+              "timestamp": "2025-12-04T18:51:33Z",
+              "value": 36.55
+            },
+            "dataPoint1876": {
+              "timestamp": "2025-12-04T18:51:44Z",
+              "value": 36.57
+            },
+            "dataPoint1877": {
+              "timestamp": "2025-12-04T18:51:58Z",
+              "value": 36.59
+            },
+            "dataPoint1878": {
+              "timestamp": "2025-12-04T18:52:10Z",
+              "value": 36.56
+            },
+            "dataPoint1879": {
+              "timestamp": "2025-12-04T18:52:24Z",
+              "value": 36.58
+            },
+            "dataPoint1880": {
+              "timestamp": "2025-12-04T18:52:37Z",
+              "value": 36.56
+            },
+            "dataPoint1881": {
+              "timestamp": "2025-12-04T18:52:50Z",
+              "value": 36.58
+            },
+            "dataPoint1882": {
+              "timestamp": "2025-12-04T18:53:09Z",
+              "value": 36.58
+            },
+            "dataPoint1883": {
+              "timestamp": "2025-12-04T18:53:23Z",
+              "value": 36.58
+            },
+            "dataPoint1884": {
+              "timestamp": "2025-12-04T18:53:33Z",
+              "value": 36.59
+            },
+            "dataPoint1885": {
+              "timestamp": "2025-12-04T18:53:46Z",
+              "value": 36.6
+            },
+            "dataPoint1886": {
+              "timestamp": "2025-12-04T18:53:56Z",
+              "value": 36.61
+            },
+            "dataPoint1887": {
+              "timestamp": "2025-12-04T18:54:18Z",
+              "value": 36.61
+            },
+            "dataPoint1888": {
+              "timestamp": "2025-12-04T18:54:39Z",
+              "value": 36.61
+            },
+            "dataPoint1889": {
+              "timestamp": "2025-12-04T18:54:52Z",
+              "value": 36.61
+            },
+            "dataPoint1890": {
+              "timestamp": "2025-12-04T18:55:16Z",
+              "value": 36.61
+            },
+            "dataPoint1891": {
+              "timestamp": "2025-12-04T18:55:32Z",
+              "value": 36.61
+            },
+            "dataPoint1892": {
+              "timestamp": "2025-12-04T18:56:32Z",
+              "value": 36.61
+            },
+            "dataPoint1893": {
+              "timestamp": "2025-12-04T18:56:57Z",
+              "value": 36.61
+            },
+            "dataPoint1894": {
+              "timestamp": "2025-12-04T18:57:51Z",
+              "value": 36.61
+            },
+            "dataPoint1895": {
+              "timestamp": "2025-12-04T18:58:03Z",
+              "value": 36.61
+            },
+            "dataPoint1896": {
+              "timestamp": "2025-12-04T18:58:17Z",
+              "value": 36.61
+            },
+            "dataPoint1897": {
+              "timestamp": "2025-12-04T18:58:27Z",
+              "value": 36.61
+            },
+            "dataPoint1898": {
+              "timestamp": "2025-12-04T19:10:43Z",
+              "value": 35.83
+            },
+            "dataPoint1899": {
+              "timestamp": "2025-12-04T19:10:56Z",
+              "value": 35.94
+            },
+            "dataPoint1900": {
+              "timestamp": "2025-12-04T19:11:19Z",
+              "value": 35.99
+            },
+            "dataPoint1901": {
+              "timestamp": "2025-12-04T19:11:34Z",
+              "value": 36.02
+            },
+            "dataPoint1902": {
+              "timestamp": "2025-12-04T19:11:45Z",
+              "value": 36.06
+            },
+            "dataPoint1903": {
+              "timestamp": "2025-12-04T19:12:03Z",
+              "value": 36.07
+            },
+            "dataPoint1904": {
+              "timestamp": "2025-12-04T19:12:18Z",
+              "value": 36.07
+            },
+            "dataPoint1905": {
+              "timestamp": "2025-12-04T19:12:32Z",
+              "value": 36.07
+            },
+            "dataPoint1906": {
+              "timestamp": "2025-12-04T19:12:43Z",
+              "value": 36.07
+            },
+            "dataPoint1907": {
+              "timestamp": "2025-12-04T19:12:55Z",
+              "value": 36.07
+            },
+            "dataPoint1908": {
+              "timestamp": "2025-12-04T19:13:22Z",
+              "value": 36.07
+            },
+            "dataPoint1909": {
+              "timestamp": "2025-12-04T19:13:44Z",
+              "value": 36.07
+            },
+            "dataPoint1910": {
+              "timestamp": "2025-12-04T19:18:33Z",
+              "value": 36.22
+            },
+            "dataPoint1911": {
+              "timestamp": "2025-12-04T19:18:46Z",
+              "value": 36.44
+            },
+            "dataPoint1912": {
+              "timestamp": "2025-12-04T19:18:57Z",
+              "value": 36.57
+            },
+            "dataPoint1913": {
+              "timestamp": "2025-12-04T19:19:16Z",
+              "value": 36.7
+            },
+            "dataPoint1914": {
+              "timestamp": "2025-12-04T19:19:30Z",
+              "value": 36.78
+            },
+            "dataPointCounter": -59
+          }
+        }
+      },
+      "status": {
+        "autoMode": "false",
+        "automode": "false",
+        "automodeSettings": {
+          "light": "true",
+          "music": "2",
+          "speed": 60,
+          "swinging": "true"
+        },
+        "heatingCooling": false,
+        "light": "false",
+        "music": "0",
+        "swinging": "false",
+        "temperatureSetPoint": 37.5
+      }
+    },
+    "test": "ESP32 connected at 2025-12-04T19:14:28Z"
+  }
+}
